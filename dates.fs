@@ -1,4 +1,3 @@
-DECIMAL
 
 : JDN ( yyyy mm dd -- jdn )
   >R                            ( Y M    ::  D )
@@ -39,15 +38,15 @@ DECIMAL
   DROP
 ;
 
-: ISO8601-YEAR
+: ISO8601-YEAR ( addr -- d) \ address of iso8601 string
   4 STR>INT
 ;
 
-: ISO8601-MONTH
+: ISO8601-MONTH ( addr -- d)
   5 2 SUBSTR STR>INT
 ;
 
-: ISO8601-DAY
+: ISO8601-DAY ( addr -- d)
   8 2 SUBSTR STR>INT
 ;
 
@@ -79,13 +78,8 @@ DECIMAL
 :unit-test t-jdn-2c 1970 2 7 jdn inv-jdn rot drop swap drop 7 = assert-true ;
 :unit-test t-substr-1a s" 1234567"  drop 3 2 substr swap drop 2 = assert-true ;
 :unit-test t-substr-1b s" 1234567"  drop 3 2 substr drop c@ '4' = assert-true ;
+:unit-test t-iso8601-year s" 2012-09-13" drop iso8601-year 2012 = assert-true ;
+:unit-test t-iso8601-month s" 2012-09-13" drop iso8601-month 9 = assert-true ;
+:unit-test t-iso8601-day s" 2012-09-13" drop iso8601-day 13 = assert-true ;
 
-
-RUN-TESTS
-
-\ s" 1970-02-07" DATE GEBURI
-\ GEBURI INV-JDN
-\ cr
-\ cr
-\ . cr . cr . cr
 
