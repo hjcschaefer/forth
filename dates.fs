@@ -71,9 +71,21 @@ DECIMAL
   .
 ;
  
-s" 1970-02-07" DATE GEBURI
-GEBURI INV-JDN
-cr
-cr
-. cr . cr . cr
+\ ------------- UNIT TESTS -------------------
+
+:unit-test t-jdn-1 2017 4 29 jdn 2457873 = assert-true ;
+:unit-test t-jdn-2a 1970 2 7 jdn inv-jdn drop drop 1970 = assert-true ;
+:unit-test t-jdn-2b 1970 2 7 jdn inv-jdn rot drop drop 2 = assert-true ;
+:unit-test t-jdn-2c 1970 2 7 jdn inv-jdn rot drop swap drop 7 = assert-true ;
+:unit-test t-substr-1a s" 1234567"  drop 3 2 substr swap drop 2 = assert-true ;
+:unit-test t-substr-1b s" 1234567"  drop 3 2 substr drop c@ '4' = assert-true ;
+
+
+RUN-TESTS
+
+\ s" 1970-02-07" DATE GEBURI
+\ GEBURI INV-JDN
+\ cr
+\ cr
+\ . cr . cr . cr
 
