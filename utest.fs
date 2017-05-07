@@ -61,12 +61,12 @@ CREATE <UNIT-TEST-TOKENS> UNIT-TEST-LIMIT CELL * ALLOT
         I . ." ...."
         I DUP TEST-NAME TYPE RUN-TEST
         DUP
-	IF
-	  ." ........ passed"
-	ELSE
-	  ." ........ *FAILED*"
-	THEN
-  	CR
+        IF
+            ." ........ passed"
+        ELSE
+            ." ........ *FAILED*"
+	    THEN
+  	    CR
         AND
   LOOP
   CR
